@@ -1,6 +1,21 @@
 // TO-DO
 import { Game } from "./game.js"
 
+
+let GAME = undefined
+
+const boardHolder = document.getElementById('board-holder')
+const gameName = document.getElementById('game-name')
+
+
+const updateUI = () => {
+    if(GAME === undefined) {
+        boardHolder.classList.add('is-invisible')
+    } else {
+        boardHolder.classList.remove('is-invisible')
+        gameName.innerHTML = GAME.getName()
+    }
+}
 window.addEventListener("DOMContentLoaded", event => {
 /*
 TODO
@@ -21,7 +36,7 @@ TODO
 
 
 
-let GAME = undefined
+
 
 let counter = 1;
 
@@ -83,20 +98,32 @@ columnHeaders.addEventListener('click', event =>{
     document.getElementById(click).classList.replace(oldColor, currentPlayer)
 })
 
-    let playerOneText = document.getElementById("player-1-name")
-    let playerTwoText = document.getElementById("player-2-name")
-    let newGame = document.getElementById("new-game")
+let playerOneText = document.getElementById("player-1-name")
+let playerTwoText = document.getElementById("player-2-name")
+let newGame = document.getElementById("new-game")
 
-    playerOneText.addEventListener("keyup", event =>{
+playerOneText.addEventListener("keyup", event =>{
 
-        if (playerOneText.value && playerTwoText.value) {
-            newGame.removeAttribute("disabled")
-        }
-
-
-    })
+    if (playerOneText.value && playerTwoText.value) {
+        newGame.removeAttribute("disabled")
+    }
 
 
+})
+playerTwoText.addEventListener("keyup", event => {
+
+    if (playerOneText.value && playerTwoText.value) {
+        newGame.removeAttribute("disabled")
+    }
+})
+
+newGame.addEventListener('click', event => {
+    GAME = new Game(playerOneText.value, playerTwoText.value);
+    playerOneText.value = ''
+    playerTwoText.value = ''
+    newGame.setAttribute('disabled','disabled')
+    updateUI() // TODO - define
+})
 
 
 
