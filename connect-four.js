@@ -18,6 +18,11 @@ TODO
 
 */
 
+
+
+
+let GAME = undefined
+
 let counter = 1;
 
 let columns = {};
@@ -77,5 +82,23 @@ columnHeaders.addEventListener('click', event =>{
     changePlayer(counter)
     document.getElementById(click).classList.replace(oldColor, currentPlayer)
 })
+
+    let playerOneText = document.getElementById("player-1-name")
+    let playerTwoText = document.getElementById("player-2-name")
+    let newGame = document.getElementById("new-game")
+
+    playerOneText.addEventListener("keyup", event =>{
+
+        if (playerOneText.value && playerTwoText.value) {
+            newGame.removeAttribute("disabled")
+        }
+
+
+    })
+
+
+
+
+
 
 })
