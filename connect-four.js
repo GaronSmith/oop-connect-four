@@ -26,9 +26,6 @@ const updateUI = () => {
 }
 window.addEventListener("DOMContentLoaded", event => {
 
-// let counter = 1;
-
-
 
 let columns = {};
 
@@ -60,6 +57,8 @@ const columnHeaders = document.getElementById('click-targets')
 //     } else {
 //         columns[click] = 5
 //     }
+
+//     console.log(columns)
 
 //     if(columns[click] === 0) {
 //         document.getElementById(click).classList.add('full')
